@@ -1,0 +1,19 @@
+{
+  "name": "RuManual — техническая база",
+  "short_name": "RuManual",
+  "description": "Техническая база по ремонту и диагностике автомобилей",
+  "lang": "ru",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0c1117",
+  "theme_color": "#10151c",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
