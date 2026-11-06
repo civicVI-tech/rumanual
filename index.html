@@ -66,20 +66,21 @@ const carVisuals={
 rio3:'https://w7.pngwing.com/pngs/194/961/png-transparent-2011-kia-rio-2010-kia-rio-2012-kia-rio-2011-kia-optima-kia-compact-car-sedan-car.png',
 rio4:'https://w7.pngwing.com/pngs/13/966/png-transparent-kia-motors-subcompact-car-2018-kia-rio-lx-kia-compact-car-sedan-car.png',
 polo:'https://e7.pngegg.com/pngimages/911/843/png-clipart-car-volkswagen-polo-sedan-sport-utility-vehicle-volkswagen-polo-sedan-car-compact-car-sedan.png',
-solaris1:'https://commons.wikimedia.org/wiki/Special:FilePath/2011%20Hyundai%20Solaris%20light%20brown%20front.jpg',
-solaris2:'https://w7.pngwing.com/pngs/874/67/png-transparent-hyundai-motor-company-car-hyundai-accent-russia-hyundai-compact-car-sedan-car.png',
-civic6:'https://commons.wikimedia.org/wiki/Special:FilePath/EK3%20pre-reestyling.png',
-civic8:'https://freepngimg.com/thumb/honda/32572-3-honda-civic-photos.png',
-civic10:'https://e7.pngegg.com/pngimages/44/298/png-clipart-2018-honda-civic-compact-car-honda-accord-honda-compact-car-sedan.png',
+solaris1:'https://cdn.imgbin.com/5/0/19/imgbin-hyundai-motor-company-car-hyundai-solaris-kia-rio-hyundai-VKYCmZYrCEKt2DVFP05P94Nsz.jpg',
+solaris2:'https://auto.vercity.ru/gallery/img/automobiles/Hyundai/2017%20Hyundai%20Solaris/900x/1488032264.jpg',
+civic6:'https://commons.wikimedia.org/wiki/Special:FilePath/1996%20Honda%20Civic%20%28EK%29%20GLi%20hatchback%20%2824836306052%29.jpg',
+civic8:'https://img.favcars.com/honda/civic/honda_civic_2008_images_1.jpg',
+civic10:'https://p7.hiclipart.com/preview/971/186/566/2018-honda-civic-lx-manual-sedan-honda-of-the-avenues-honda.jpg',
 camry40:'https://w7.pngwing.com/pngs/781/94/png-transparent-2008-toyota-camry-2009-toyota-camry-2006-toyota-camry-toyota-camry-hybrid-car-toyota-compact-car-sedan-car.png',
-camry50:'https://image.pngaaa.com/223/2879223-middle.png',
+camry50:'https://cdn.imgbin.com/17/10/25/imgbin-2015-toyota-camry-xle-sedan-car-2016-toyota-camry-vehicle-toyota-AHfbvkyAzhDG6sDdX5zGnqRab.jpg',
 camry70:'https://toppng.com/uploads/preview/ew-2019-toyota-camry-toyota-camry-35-v6-2018-115629681119ourjkcwht.png',
-bmwe46:'https://bmv.vin/images/vin/WBAAY31020KP00844-ext-3c73b90e2b3acce9.jpg',
+bmwe46:'https://vincheck.info/assets/img/vehicles/trimmed/2003_bmw_3series_m3.png',
 bmwe90:'https://clipart-library.com/2023/Silver_BMW_3_2011_Car_PNG_Clipart-126.png',
-bmwf30:'https://www.vhv.rs/dpng/d/399-3995404_2018-bmw-3-series-bmw-x5-car-bmw.png'
+bmwf30:'https://p7.hiclipart.com/preview/485/999/599/2015-bmw-328i-2015-bmw-3-series-sedan-car-bmw-x5-bmw.jpg'
 };
+const carPhotoBodies={rio3:'Седан',rio4:'Седан',polo:'Седан',solaris1:'Седан',solaris2:'Седан',civic6:'Хэтчбек',civic8:'Седан',civic10:'Седан',camry40:'Седан',camry50:'Седан',camry70:'Седан',bmwe46:'Седан',bmwe90:'Седан',bmwf30:'Седан'};
 const brandVisuals={Kia:{logo:'kia',flag:'🇰🇷'},Volkswagen:{logo:'volkswagen',flag:'🇩🇪'},Hyundai:{logo:'hyundai',flag:'🇰🇷'},Honda:{logo:'honda',flag:'🇯🇵'},Toyota:{logo:'toyota',flag:'🇯🇵'},BMW:{logo:'bmw',flag:'🇩🇪'}};
-function card(c){return '<button class="modeltile" onclick="openCar(\''+c.id+'\')"><span class="modelvisual"><img src="'+carVisuals[c.id]+'" alt="'+c.brand+' '+c.model+' '+c.gen+'" loading="lazy" onerror="this.style.display=\'none\'"></span><span><strong>'+c.brand+' '+c.model+'</strong><small>'+c.gen+' · '+c.years+'</small><span class="modelbody">'+c.body+'</span></span></button>'}function featuredCard(c){return '<button class="featuredcard" onclick="openCar(\''+c.id+'\')"><strong>'+c.brand+' '+c.model+' · '+c.gen+'</strong><small>'+c.years+' · '+c.body+'</small><div class="meta"><span class="pill">'+c.engines.slice(0,2).join(' / ')+'</span><span class="pill">'+c.drive+' привод</span></div></button>'}
+function card(c){return '<button class="modeltile" onclick="openCar(\''+c.id+'\')"><span class="modelvisual"><img src="'+carVisuals[c.id]+'" alt="'+c.brand+' '+c.model+' '+c.gen+' — '+(carPhotoBodies[c.id]||'кузов не подтверждён')+'" loading="lazy" onerror="this.style.display=\'none\'"></span><span><strong>'+c.brand+' '+c.model+'</strong><small>'+c.gen+' · '+c.years+'</small><span class="modelbody">'+(carPhotoBodies[c.id]?'На фото: '+carPhotoBodies[c.id]+' · ':'')+c.body+'</span></span></button>'}function featuredCard(c){return '<button class="featuredcard" onclick="openCar(\''+c.id+'\')"><strong>'+c.brand+' '+c.model+' · '+c.gen+'</strong><small>'+c.years+' · '+c.body+'</small><div class="meta"><span class="pill">'+c.engines.slice(0,2).join(' / ')+'</span><span class="pill">'+c.drive+' привод</span></div></button>'}
 function brandCard(b){let v=brandVisuals[b],count=cars.filter(c=>c.brand===b).length;return '<button class="brandtile" onclick="filterBrand(\''+b+'\')"><span class="country">'+v.flag+'</span><img src="https://cdn.jsdelivr.net/gh/vehiclespecs/brand-logos@main/'+v.logo+'-logo.svg" alt="'+b+' logo" loading="lazy" onerror="this.outerHTML=\'<span class=brandlogo-fallback>'+b+'</span>\'"><strong>'+b+'</strong><small>'+count+' поколени'+(count===1?'е':'й')+' в каталоге</small></button>'}
 function showBrandIndex(){document.getElementById('catalogBrands').style.display='grid';document.getElementById('catalogModelHead').style.display='none';document.getElementById('allcars').style.display='none'}
 
